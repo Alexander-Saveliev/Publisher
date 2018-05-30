@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.join-form {
+    background: #f3f3f3;
+}
+
+.create-session-form {
+    margin: 80px auto;
+}
+
+.forms input {
+    width: 85%;
+    margin: 30px auto;
+}
+
+.forms h4 {
+    margin: 30px auto 45px auto;
+}
+
+.forms button {
+    width: 100px;
+    margin-bottom: 30px
+}
+
+.card {
+  margin: 10px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.chapter-name {
+  margin: 70px auto 17px 10px;
+  text-align: left;
+}
+
+#login_message {
+  display: block;
+  color: red;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.action-button {
+  margin: 30px 100px;
+}
