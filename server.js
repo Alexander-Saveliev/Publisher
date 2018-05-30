@@ -46,6 +46,7 @@ db.connect('mongodb://localhost:27017', function(err) {
 var loginController        = require('./controller/loginController');
 var registrationController = require('./controller/registrationController');
 var homeController         = require('./controller/homeController');
+var sessionController      = require('./controller/sessionController');
 
 app.get('/', loginController.login);
 
@@ -56,3 +57,6 @@ app.get('/home', homeController.letIn);
 app.post('/home', homeController.letIn);
 
 app.post('/logout', loginController.logout);
+
+app.post('/create-session', sessionController.createSession);
+app.post('/join-session', sessionController.joinSession);

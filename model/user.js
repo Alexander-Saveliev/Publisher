@@ -21,7 +21,6 @@ exports.addNewUser = function(user, cb) {
 exports.letIn = function(usesrname, password, cb) {
     var cryptedPass = bcrypt.hashSync(password, salt);
     db.get().collection('user').findOne({ "username": usesrname, "password": cryptedPass }, function (err, doc) {
-        console.log(doc);
         cb(err, (doc != null));
     });
 };
