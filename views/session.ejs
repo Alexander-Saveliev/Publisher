@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%-partial('./blocks/bootstrap_header.ejs')%>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/session.css">
+  </head>
+  <body>
+
+    <%-partial('./blocks/navbar.ejs')%>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-lg btn-danger float-right action-button" id="logout" type="button">logout</button>
+      </div>
+    </div>
+
+    <div class="row">
+        <div id="session-id-header" class="col-10 offset-1">
+            <h2>SessionID: 12345</h2>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div id="main-video" class="col-6 offset-1">
+            <video autoplay="true"></video>
+        </div>
+
+        <div id="chat" class="col-3 offset-1">
+
+        </div>
+    </div>
+
+
+
+
+    <%-partial('./blocks/bootstrap_js.ejs')%>
+    <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/logout.js"></script>
+    <script type="text/javascript" src="js/session.js"></script>
+  </body>
+</html>

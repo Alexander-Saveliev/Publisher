@@ -29,3 +29,17 @@ exports.letIn = function(req, res) {
         }
     }
 }
+
+exports.about = function(req, res) {
+    if (req.session.loggedUser) {
+        user = req.session.loggedUser;
+        res.render('about.ejs', {
+            user: user
+        });
+    } else {
+        req.session.destroy();
+        res.render('about.ejs', {
+            user: "Log in"
+        });
+    }
+}

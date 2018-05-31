@@ -60,3 +60,6 @@ app.post('/logout', loginController.logout);
 
 app.post('/create-session', sessionController.createSession);
 app.post('/join-session', sessionController.joinSession);
+
+app.get('/session', sessionController.session);
+app.get('/about', homeController.about)

@@ -33,3 +33,14 @@ exports.joinSession = function(req, res) {
     console.log(sessionID);
     res.status(200).send();
 }
+
+exports.session = function(req, res) {
+    var username = req.session.loggedUser;
+    if (!username) {
+        return res.redirect('/home');
+    }
+
+    res.render('session.ejs', {
+           user: username
+    });
+}

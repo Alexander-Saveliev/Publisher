@@ -19,7 +19,12 @@ $(function() {
     });
 });
 
+function initMainVideoThumbnail() {
+    $('#main-video video').css("background", "url('img/subscriber-msg.jpg') round");
+    // $('#main-video video').css("background-size", "cover");
+}
 
+initMainVideoThumbnail();
 
 /*
 // Get all the attributes from the template in EJS style

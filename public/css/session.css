@@ -1,0 +1,13 @@
+#main-video video {
+    width: 100%;
+    height: auto;
+}
+
+#chat {
+    background-color: #ff0000;
+    height: 1005;
+}
+
+#session-id-header {
+    margin: 20px auto;
+}

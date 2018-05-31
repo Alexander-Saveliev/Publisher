@@ -4,13 +4,11 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-.join-form {
+form {
     background: #f3f3f3;
+    margin: 40px auto;
 }
 
-.create-session-form {
-    margin: 80px auto;
-}
 
 .forms input {
     width: 85%;
