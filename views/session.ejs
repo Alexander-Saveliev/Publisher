@@ -11,20 +11,21 @@
 
     <div class="row">
       <div class="col">
-        <button class="btn btn-lg btn-danger float-right action-button" id="logout" type="button">logout</button>
+        <button class="btn btn-lg btn-danger float-right action-button" id="leaveSession" type="button">leave session</button>
       </div>
     </div>
 
     <div class="row">
         <div id="session-id-header" class="col-10 offset-1">
-            <h2>SessionID: 12345</h2>
+            <h2>sessionID:  <%= sessionID %></h2>
+            <h2>token:  <%= token %></h2>
+            <h2>user: <%= user %></h2>
         </div>
 
     </div>
 
     <div class="row">
         <div id="main-video" class="col-6 offset-1">
-            <video autoplay="true"></video>
         </div>
 
         <div id="chat" class="col-3 offset-1">
@@ -36,6 +37,14 @@
 
 
     <%-partial('./blocks/bootstrap_js.ejs')%>
+    <script type="text/javascript">
+        var sessionID = <%- JSON.stringify(sessionID) %>;
+        var token     = <%- JSON.stringify(token) %>;
+        var user      = <%- JSON.stringify(user) %>;
+        var role      = <%- JSON.stringify(role) %>;
+    </script>
+
+    <script src="js/openvidu-browser-1.8.0.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
     <script type="text/javascript" src="js/session.js"></script>
