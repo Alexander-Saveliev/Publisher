@@ -10,39 +10,28 @@
     <%-partial('./blocks/navbar.ejs')%>
 
     <div class="row">
-      <div class="col">
-        <button class="btn btn-lg btn-danger float-right action-button" id="leaveSession" type="button">leave session</button>
-      </div>
-    </div>
-
-    <div class="row">
-        <div id="session-id-header" class="col-10 offset-1">
-            <h2>sessionID:  <%= sessionID %></h2>
-            <h2>token:  <%= token %></h2>
-            <h2>user: <%= user %></h2>
+        <div id="main-video" class="col-9">
         </div>
 
-    </div>
-
-    <div class="row">
-        <div id="main-video" class="col-6 offset-1">
-        </div>
-
-        <div id="chat" class="col-3 offset-1">
-
+        <div id="chat" class="col-3">
+            <div class="form-group">
+                <input id="message-field" class="form-controll" type="text" name="message" required="true" placeholder="Everyone can see your message">
+                <button id="send" type="button" name="send-message" class="btn btn-secondary float-right">Send</button>
+            </div>
         </div>
     </div>
 
-
-
-
-    <%-partial('./blocks/bootstrap_js.ejs')%>
     <script type="text/javascript">
+        $( "#navbar-menu-container" ).append( '<button class="dropdown-item" id="getID">get id</button>' );
+        $( "#navbar-menu-container" ).append( '<button class="dropdown-item" id="leaveSession" type="button">leave session</button>' );
+
         var sessionID = <%- JSON.stringify(sessionID) %>;
         var token     = <%- JSON.stringify(token) %>;
         var user      = <%- JSON.stringify(user) %>;
         var role      = <%- JSON.stringify(role) %>;
     </script>
+
+    <%-partial('./blocks/bootstrap_js.ejs')%>
 
     <script src="js/openvidu-browser-1.8.0.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>

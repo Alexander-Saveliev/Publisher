@@ -1,27 +1,7 @@
 $( "#leaveSession" ).click(function() { leaveSession() });
 $( "#logout" ).click(function() { logout() });
-
-
-
-$('form').submit(function(e) {
-    $('#send').hide();
-    $('#login_message').html('<img src="img/loading.gif" alt="">');
-
-    var $form = $(this);
-    $.ajax({
-      type: $form.attr('method'),
-      url: $form.attr('action'),
-      data: $form.serialize()
-    }).done(function() {
-      window.location = "/";
-    }).fail(function( data ) {
-      $('#send').show();
-      $('#login_message').text(data.responseText);
-    });
-    // отмена действия по умолчанию для кнопки submit
-    e.preventDefault();
-});
-
+$( "#send" ).click(function() { sendMessage() });
+$( "#getID" ).click(function() { getID() });
 
 
 function leaveSession() {
@@ -41,27 +21,57 @@ session.on('streamCreated', function (event) {
     var subscriber = session.subscribe(event.stream, 'main-video');
 });
 
-session.connect(token, '{"clientData": "' + "abc" + '"}', function (error) {
-  if (!error) {
-    if (role == "publisher") {
-      var publisher = OV.initPublisher('main-video', {
-        audio: true,
-        video: true,
-        audioActive: true,
-        videoActive: true,
-        quality: 'MEDIUM',
-        screen: true
-      });
+session.on('signal', function(event) {
+    var colorStyle = "self";
 
-      publisher.on('videoElementCreated', function (event) {
-          $(event.element).prop('muted', true); // Mute local video
-      });
-      
-      session.publish(publisher);
-    } else {
-      console.warn('You don\'t have permissions to publish');
+    if (event.from.data == user) {
+        colorStyle = "";
     }
-  } else {
-    console.warn('There was an error connecting to the session:', error.code, error.message);
-  }
+
+    $( "#chat" ).append( `<p class="main-message ${colorStyle}">${event.from.data}:   ${event.data}</p>` );
 });
+
+session.connect(token, '', function (error) {
+    if (!error) {
+        if (role == "publisher") {
+          var publisher = OV.initPublisher('main-video', {
+                audio: true,
+                video: true,
+                audioActive: true,
+                videoActive: true,
+                quality: 'MEDIUM',
+                screen: true
+          });
+
+          publisher.on('videoElementCreated', function (event) {
+              $(event.element).prop('muted', true); // Mute local video
+          });
+
+          session.publish(publisher);
+        } else {
+          console.warn('You don\'t have permissions to publish');
+        }
+    } else {
+        console.warn('There was an error connecting to the session:', error.code, error.message);
+    }
+});
+
+function sendMessage() {
+    session.signal({
+            data: $('#message-field').val(),
+            to: []
+        },
+        function(error) {
+            $("#message-field").val('');
+
+            if (!error) {
+                console.log("Message was send successfully");
+            } else {
+                console.warn("Error with senging message: " + error);
+            }
+        });
+}
+
+function getID() {
+    alert(sessionID);
+}

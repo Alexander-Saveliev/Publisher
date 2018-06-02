@@ -35,7 +35,7 @@ exports.createSession = function(req, res) {
 
     var role = OpenViduRole.PUBLISHER
 
-    var serverData = JSON.stringify({ serverData: req.session.loggedUser });
+    var serverData = req.session.loggedUser;
 
     // Build tokenOptions object with the serverData and the role
     var tokenOptions = {
@@ -98,7 +98,7 @@ exports.joinSession = function(req, res) {
     }
 
     var role = OpenViduRole.SUBSCRIBER;
-    var serverData = JSON.stringify({ serverData: req.session.loggedUser });
+    var serverData = req.session.loggedUser;
 
     var tokenOptions = {
         data: serverData,

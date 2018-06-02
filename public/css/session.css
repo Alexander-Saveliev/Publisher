@@ -1,13 +1,45 @@
 #main-video video {
     width: 100%;
     height: auto;
+    padding: 40px;
 }
 
 #chat {
-    background-color: #ff0000;
-    height: 1005;
+    padding: 20px;
+    height: 100%;
+    padding: 40px;
+}
+
+#send {
+    margin: 0 20px;
+    height: 40px;
+}
+
+#message-field {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 40px;
+    width: 70%;
 }
 
 #session-id-header {
     margin: 20px auto;
+}
+
+.button-container {
+    margin: 10px 40px;
+}
+
+.main-message {
+    background: #0000ff;
+    border-radius: 20px;
+    opacity: 0.7;
+    color: #ffffff;
+    margin: 20px;
+    padding: 7px;
+    padding-left: 20px;
+}
+
+.self {
+    background: #f31133;
 }

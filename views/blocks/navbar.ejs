@@ -1,15 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a href="#" class="navbar-brand">Pocketband</a>
+    <a href="#" class="navbar-brand">Pocketband</a>
 
-  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarMenu">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-      <li class="nav-item"><a href="/about" class="nav-link">About</a> </li>
-      <li class="nav-item"><a href="/" class="nav-link" id="logout"><%= user %></a></li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/about" class="nav-link">About</a> </li>
+            <li class="nav-item">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= user %>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right" id="navbar-menu-container">
+                    <button class="dropdown-item" type="button" id="logout">log out</button>
+                  </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </nav>
