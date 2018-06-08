@@ -7,24 +7,31 @@
   </head>
   <body>
 
-    <%-partial('./blocks/navbar.ejs')%>
+    <%-partial('./blocks/navbar_session.ejs')%>
 
     <div class="row">
         <div id="main-video" class="col-9">
         </div>
 
-        <div id="chat" class="col-3">
-            <div class="form-group">
-                <input id="message-field" class="form-controll" type="text" name="message" required="true" placeholder="Everyone can see your message">
-                <button id="send" type="button" name="send-message" class="btn btn-secondary float-right">Send</button>
+        <div class="col-3" id="chat">
+            <div class="row">
+                <div class="col-8">
+                    <input id="message-field" class="form-controll" type="text" name="message" required="true" placeholder="Message">
+                </div>
+
+                <div class="col-4">
+                    <button id="send" type="button" name="send-message" class="btn btn-secondary float-right">Send</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container" id="messages">
+
+                </div>
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
-        $( "#navbar-menu-container" ).append( '<button class="dropdown-item" id="getID">get id</button>' );
-        $( "#navbar-menu-container" ).append( '<button class="dropdown-item" id="leaveSession" type="button">leave session</button>' );
-
         var sessionID = <%- JSON.stringify(sessionID) %>;
         var token     = <%- JSON.stringify(token) %>;
         var user      = <%- JSON.stringify(user) %>;

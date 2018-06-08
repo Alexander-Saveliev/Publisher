@@ -10,23 +10,14 @@
 
     <div class="container forms">
         <div class="row text-center">
-            <form class="col-8 offset-2 jq-send-form" action="join-session" method="post">
-                <h4>Join session</h4>
-
-                <input type="text" name="sessionID" required="true" placeholder="session id" class="form-control">
-
-                <button type="submit" class="btn btn-success">Join</button>
-            </form>
-        </div>
-
-        <div class="row text-center">
-            <form class="col-8 offset-2m jq-send-form" action="create-session" method="post">
+            <form id="universal-form" class="col-8 offset-2m jq-send-form" action="" method="post">
                 <h4>Create session</h4>
+                <span id="login_message"></span>
 
-                <input type="text" name="sessionName" required="true" placeholder="session name" class="form-control">
-                <input type="text" name="description" required="true" placeholder="description" class="form-control">
+                <input type="text" name="sessionIDName" required="true" placeholder="session name" class="form-control">
 
-                <button type="submit" class="btn btn-success">Create</button>
+                <button type="submit" class="btn btn-success" id="create">Create</button>
+                <button type="submit" class="btn btn-success" id="join">join</button>
             </form>
         </div>
     </div>

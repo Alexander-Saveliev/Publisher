@@ -22,15 +22,10 @@ exports.createSession = function(req, res) {
         return res.status(400).send("Unauthorized");
     }
 
-    var sessionName = req.body.sessionName;
-    var description = req.body.description;
+    var sessionName = req.body.sessionIDName;
 
     if (!sessionName) {
         return res.status(400).send("session name is empty");
-    }
-
-    if (!description) {
-        return res.status(400).send("description is empty");
     }
 
     var role = OpenViduRole.PUBLISHER
@@ -85,7 +80,7 @@ exports.joinSession = function(req, res) {
         return res.status(400).send("Unauthorized");
     }
 
-    var sessionID = req.body.sessionID;
+    var sessionID = req.body.sessionIDName;
 
     if (!sessionID) {
         return res.status(400).send("SessionID is empty");

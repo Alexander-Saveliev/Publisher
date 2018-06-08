@@ -28,7 +28,7 @@ session.on('signal', function(event) {
         colorStyle = "";
     }
 
-    $( "#chat" ).append( `<p class="main-message ${colorStyle}">${event.from.data}:   ${event.data}</p>` );
+    $( "#messages" ).append( `<p class="main-message ${colorStyle}">${event.from.data}:   ${event.data}</p>` );
 });
 
 session.connect(token, '', function (error) {
