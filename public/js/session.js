@@ -16,6 +16,8 @@ function leaveSession() {
 var OV = new OpenVidu();
 var session = OV.initSession(sessionID);
 
+var messagesCount = 0;
+
 
 session.on('streamCreated', function (event) {
     var subscriber = session.subscribe(event.stream, 'main-video');
@@ -27,8 +29,12 @@ session.on('signal', function(event) {
     if (event.from.data == user) {
         colorStyle = "";
     }
-
-    $( "#messages" ).append( `<p class="main-message ${colorStyle}">${event.from.data}:   ${event.data}</p>` );
+    if (messagesCount > 9) {
+        $( "#messages" ).children().last().remove();
+    } else {
+        messagesCount++
+;    }
+    $( "#messages" ).prepend( `<p class="main-message ${colorStyle}">${event.from.data}:   ${event.data}</p>` );
 });
 
 session.connect(token, '', function (error) {
@@ -75,3 +81,11 @@ function sendMessage() {
 function getID() {
     alert(sessionID);
 }
+
+$("#drop-down-button").click(function() {
+    if ($("#navbar-menu-container").attr(display) == "none") {
+        console.log("none");
+    } else {
+        console.log("not none");
+    }
+});

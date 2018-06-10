@@ -22,12 +22,6 @@ exports.createSession = function(req, res) {
         return res.status(400).send("Unauthorized");
     }
 
-    var sessionName = req.body.sessionIDName;
-
-    if (!sessionName) {
-        return res.status(400).send("session name is empty");
-    }
-
     var role = OpenViduRole.PUBLISHER
 
     var serverData = req.session.loggedUser;
@@ -37,9 +31,6 @@ exports.createSession = function(req, res) {
         data: serverData,
         role: role
     };
-
-    // New session
-    console.log('New session ' + sessionName);
 
     // Create a new OpenVidu Session asynchronously
     OV.createSession()
@@ -163,7 +154,7 @@ exports.session = function(req, res) {
         return res.redirect('/home');
     }
 
-    res.render('session.ejs', {
+    return res.render('session.ejs', {
            user: username
     });
 }

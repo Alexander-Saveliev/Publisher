@@ -3,6 +3,8 @@
   <head>
     <%-partial('./blocks/bootstrap_header.ejs')%>
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/session.css">
+    <%-partial('./blocks/bootstrap.ejs')%>
   </head>
   <body>
 
@@ -11,10 +13,10 @@
     <div class="container forms">
         <div class="row text-center">
             <form id="universal-form" class="col-8 offset-2m jq-send-form" action="" method="post">
-                <h4>Create session</h4>
+                <h4>Join to existion session with session id. Or create a new one</h4>
                 <span id="login_message"></span>
 
-                <input type="text" name="sessionIDName" required="true" placeholder="session name" class="form-control">
+                <input type="text" name="sessionIDName" placeholder="session id" class="form-control">
 
                 <button type="submit" class="btn btn-success" id="create">Create</button>
                 <button type="submit" class="btn btn-success" id="join">join</button>
@@ -23,7 +25,6 @@
     </div>
 
 
-    <%-partial('./blocks/bootstrap_js.ejs')%>
     <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
     <script type="text/javascript" src="js/home.js"></script>

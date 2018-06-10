@@ -18,15 +18,12 @@
                 <div class="col-8">
                     <input id="message-field" class="form-controll" type="text" name="message" required="true" placeholder="Message">
                 </div>
-
                 <div class="col-4">
                     <button id="send" type="button" name="send-message" class="btn btn-secondary float-right">Send</button>
                 </div>
             </div>
             <div class="row">
-                <div class="container" id="messages">
-
-                </div>
+                <div class="container" id="messages"></div>
             </div>
         </div>
     </div>
@@ -37,8 +34,6 @@
         var user      = <%- JSON.stringify(user) %>;
         var role      = <%- JSON.stringify(role) %>;
     </script>
-
-    <%-partial('./blocks/bootstrap_js.ejs')%>
 
     <script src="js/openvidu-browser-1.8.0.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>

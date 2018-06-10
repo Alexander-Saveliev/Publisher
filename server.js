@@ -18,7 +18,7 @@ var app        = express();
 app.use(session({
     saveUninitialized: true,
     resave: false,
-    secret: 'MY_SECRET'
+    secret: process.argv[3]
 }));
 
 app.use(express.static(__dirname + '/public'));

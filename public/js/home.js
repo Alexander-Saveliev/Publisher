@@ -19,7 +19,7 @@ $('#universal-form button').click(function(ev) {
         url: action,
         data: $form.serialize()
     }).done(function( data ) {
-        $("body").html(data);
+        $("body").empty().append(data);
     }).fail(function( reason ) {
          $('#create').show();
          $('#join').show();
