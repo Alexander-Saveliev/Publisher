@@ -3,6 +3,9 @@ $( "#logout" ).click(function() { logout() });
 $( "#send" ).click(function() { sendMessage() });
 $( "#getID" ).click(function() { getID() });
 
+var OV            = new OpenVidu();
+var session       = OV.initSession(sessionID);
+var messagesCount = 0;
 
 function leaveSession() {
     session.disconnect();
@@ -11,12 +14,6 @@ function leaveSession() {
         window.location = "/home";
     });
 };
-
-
-var OV      = new OpenVidu();
-var session = OV.initSession(sessionID);
-var messagesCount = 0;
-
 
 session.on('streamCreated', function (event) {
     var subscriber = session.subscribe(event.stream, 'main-video');
@@ -62,13 +59,16 @@ session.connect(token, '', function (error) {
 });
 
 function sendMessage() {
+    var message = $('#message-field').val();
+    $('#message-field').val('');
+    if (message == "") {
+        return;
+    }
     session.signal({
-            data: $('#message-field').val(),
+            data: message,
             to: []
         },
         function(error) {
-            $("#message-field").val('');
-
             if (!error) {
                 console.log("Message was send successfully");
             } else {

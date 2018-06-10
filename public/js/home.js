@@ -1,6 +1,5 @@
 $( "#logout" ).click(function() { logout() });
 
-
 $('#universal-form button').click(function(ev) {
     ev.preventDefault()
     $('#create').hide();

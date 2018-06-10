@@ -1,9 +1,8 @@
 var userModel = require('../model/user.js');
 
-function checkNewUserParams(userame, pass, passCheck, email, cb) {
+function checkNewUserParams(username, pass, passCheck, email, cb) {
     if (!username || !pass || !passCheck || !email) {
-        cb("Incorrect parameter");
-        return;
+        return cb("Incorrect parameter");
     }
 
     if (pass.length < 3) {
@@ -11,11 +10,11 @@ function checkNewUserParams(userame, pass, passCheck, email, cb) {
     } else if (pass != passCheck) {
         cb("Passwords should be equal");
     } else {
-        userModel.findByName(userame, function(err, doc) {
+        userModel.findByName(username, function(err, doc) {
             if (err) {
                 cb(err);
             } else if (doc) {
-                cb(`User with name ${userame} already exists`);
+                cb(`User with name ${username} already exists`);
             } else {
                 cb();
             }

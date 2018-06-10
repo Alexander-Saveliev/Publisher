@@ -8,13 +8,13 @@
     <body>
         <%-partial('./blocks/navbar_session.ejs')%>
         <div class="row">
-            <div id="main-video" class="col-9">
+            <div id="main-video" class="col-12 col-md-8">
             </div>
 
-            <div class="col-3" id="chat">
+            <div class="col-10 offset-1 col-md-4 offset-md-0" id="chat">
                 <div class="row">
                     <div class="col-8">
-                        <input id="message-field" class="form-controll" type="text" name="message" required="true" placeholder="Message">
+                        <input id="message-field" class="form-control" type="text" name="message" placeholder="Message">
                     </div>
                     <div class="col-4">
                         <button id="send" type="button" name="send-message" class="btn btn-secondary float-right">Send</button>
