@@ -23,7 +23,7 @@ exports.letIn = function(req, res) {
                     res.status(200).send();
                 } else {
                     req.session.destroy();
-                    res.status(400).send("Incorrect username or password");
+                    res.status(401).send("Incorrect username or password");
                 }
             });
         }

@@ -51,11 +51,16 @@ db.connect('mongodb://localhost:27017', function(err) {
 /* END CONFIGURATION */
 
 
+/* CONTROLLERS */
 
 var loginController        = require('./controller/loginController');
 var registrationController = require('./controller/registrationController');
 var homeController         = require('./controller/homeController');
 var sessionController      = require('./controller/sessionController');
+
+
+
+/* INTERACTION */
 
 app.get('/', loginController.login);
 

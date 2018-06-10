@@ -1,43 +1,41 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <%-partial('./blocks/bootstrap_header.ejs')%>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/session.css">
-  </head>
-  <body>
+    <head>
+        <%-partial('./blocks/bootstrap_header.ejs')%>
+        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/session.css">
+    </head>
+    <body>
+        <%-partial('./blocks/navbar_session.ejs')%>
+        <div class="row">
+            <div id="main-video" class="col-9">
+            </div>
 
-    <%-partial('./blocks/navbar_session.ejs')%>
-
-    <div class="row">
-        <div id="main-video" class="col-9">
-        </div>
-
-        <div class="col-3" id="chat">
-            <div class="row">
-                <div class="col-8">
-                    <input id="message-field" class="form-controll" type="text" name="message" required="true" placeholder="Message">
+            <div class="col-3" id="chat">
+                <div class="row">
+                    <div class="col-8">
+                        <input id="message-field" class="form-controll" type="text" name="message" required="true" placeholder="Message">
+                    </div>
+                    <div class="col-4">
+                        <button id="send" type="button" name="send-message" class="btn btn-secondary float-right">Send</button>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <button id="send" type="button" name="send-message" class="btn btn-secondary float-right">Send</button>
+                <div class="row">
+                    <div class="container" id="messages"></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="container" id="messages"></div>
-            </div>
         </div>
-    </div>
 
-    <script type="text/javascript">
-        var sessionID = <%- JSON.stringify(sessionID) %>;
-        var token     = <%- JSON.stringify(token) %>;
-        var user      = <%- JSON.stringify(user) %>;
-        var role      = <%- JSON.stringify(role) %>;
-    </script>
+        <script type="text/javascript">
+            var sessionID = <%- JSON.stringify(sessionID) %>;
+            var token     = <%- JSON.stringify(token) %>;
+            var user      = <%- JSON.stringify(user) %>;
+            var role      = <%- JSON.stringify(role) %>;
+        </script>
 
-    <script src="js/openvidu-browser-1.8.0.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
-    <script type="text/javascript" src="js/logout.js"></script>
-    <script type="text/javascript" src="js/session.js"></script>
-  </body>
+        <script src="js/openvidu-browser-1.8.0.js"></script>
+        <script type="text/javascript" src="js/ajax.js"></script>
+        <script type="text/javascript" src="js/logout.js"></script>
+        <script type="text/javascript" src="js/session.js"></script>
+    </body>
 </html>

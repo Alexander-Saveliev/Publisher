@@ -1,32 +1,29 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <%-partial('./blocks/bootstrap_header.ejs')%>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/session.css">
-    <%-partial('./blocks/bootstrap.ejs')%>
-  </head>
-  <body>
+    <head>
+        <%-partial('./blocks/bootstrap_header.ejs')%>
+        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/session.css">
+        <%-partial('./blocks/bootstrap.ejs')%>
+    </head>
+    <body>
+        <%-partial('./blocks/navbar.ejs')%>
+        <div class="container forms">
+            <div class="row text-center">
+                <form id="universal-form" class="col-8 offset-2m jq-send-form" action="" method="post">
+                    <h4>Join to existion session with session id. Or create a new one</h4>
+                    <span id="login_message"></span>
 
-    <%-partial('./blocks/navbar.ejs')%>
+                    <input type="text" name="sessionIDName" placeholder="session id" class="form-control">
 
-    <div class="container forms">
-        <div class="row text-center">
-            <form id="universal-form" class="col-8 offset-2m jq-send-form" action="" method="post">
-                <h4>Join to existion session with session id. Or create a new one</h4>
-                <span id="login_message"></span>
-
-                <input type="text" name="sessionIDName" placeholder="session id" class="form-control">
-
-                <button type="submit" class="btn btn-success" id="create">Create</button>
-                <button type="submit" class="btn btn-success" id="join">join</button>
-            </form>
+                    <button type="submit" class="btn btn-success" id="create">Create</button>
+                    <button type="submit" class="btn btn-success" id="join">join</button>
+                </form>
+            </div>
         </div>
-    </div>
 
-
-    <script type="text/javascript" src="js/ajax.js"></script>
-    <script type="text/javascript" src="js/logout.js"></script>
-    <script type="text/javascript" src="js/home.js"></script>
-  </body>
+        <script type="text/javascript" src="js/ajax.js"></script>
+        <script type="text/javascript" src="js/logout.js"></script>
+        <script type="text/javascript" src="js/home.js"></script>
+    </body>
 </html>

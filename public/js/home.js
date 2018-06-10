@@ -23,6 +23,6 @@ $('#universal-form button').click(function(ev) {
     }).fail(function( reason ) {
          $('#create').show();
          $('#join').show();
-        $("#login_message").text(reason.responseText);
+         $("#login_message").text(reason.responseText);
     });
 });

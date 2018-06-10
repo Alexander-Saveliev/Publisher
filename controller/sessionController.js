@@ -7,13 +7,10 @@ var TokenOptions = require('openvidu-node-client').TokenOptions;
 var OPENVIDU_URL = process.argv[2];
 // Environment variable: secret shared with our OpenVidu server
 var OPENVIDU_SECRET = process.argv[3];
-
 // Entrypoint to OpenVidu Node Client SDK
 var OV = new OpenVidu(OPENVIDU_URL, OPENVIDU_SECRET);
-
 // Collection to pair session ids with OpenVidu Session objects
 var mapSessions = {};
-
 // Collection to pair session ids with tokens
 var mapSessionIDsTokens = {};
 
@@ -22,16 +19,13 @@ exports.createSession = function(req, res) {
         return res.status(400).send("Unauthorized");
     }
 
-    var role = OpenViduRole.PUBLISHER
-
+    var role       = OpenViduRole.PUBLISHER
     var serverData = req.session.loggedUser;
-
     // Build tokenOptions object with the serverData and the role
     var tokenOptions = {
         data: serverData,
         role: role
     };
-
     // Create a new OpenVidu Session asynchronously
     OV.createSession()
         .then(session => {
@@ -39,14 +33,11 @@ exports.createSession = function(req, res) {
             mapSessions[session.sessionId] = session;
             // Store a new empty array in the collection of tokens
             mapSessionIDsTokens[session.sessionId] = [];
-
             // Generate a new token asynchronously with the recently created tokenOptions
             session.generateToken(tokenOptions)
                 .then(token => {
-
                     // Store the new token in the collection of tokens
                     mapSessionIDsTokens[session.sessionId].push(token);
-
                     // Return session template with all the needed attributes
                     return res.render('session.ejs', {
                         sessionID: session.sessionId,
@@ -68,17 +59,15 @@ exports.createSession = function(req, res) {
 
 exports.joinSession = function(req, res) {
     if (!req.session.loggedUser) {
-        return res.status(400).send("Unauthorized");
+        return res.status(401).send("Unauthorized");
     }
 
     var sessionID = req.body.sessionIDName;
-
     if (!sessionID) {
         return res.status(400).send("SessionID is empty");
     }
 
     var session = mapSessions[sessionID];
-
     if (!session) {
         return res.status(400).send("Session with this ID doesn't exist");
     }
@@ -93,10 +82,8 @@ exports.joinSession = function(req, res) {
 
     session.generateToken(tokenOptions)
         .then(token => {
-
             // Store the new token in the collection of tokens
             mapSessionIDsTokens[sessionID].push(token);
-
             // Return session template with all the needed attributes
             return res.render('session.ejs', {
                 sessionID: session.sessionId,
@@ -114,13 +101,12 @@ exports.joinSession = function(req, res) {
 exports.leaveSession = function(req, res) {
     if (!req.session.loggedUser) {
         req.session.destroy();
-        res.status(400).send();
+        res.status(401).send();
     } else {
         // Retrieve params from POST body
         var sessionID = req.body.sessionID;
         var token     = req.body.token;
         console.log('Removing user | {sessionID, token}={' + sessionID + ', ' + token + '}');
-
         // If the session exists
         if (mapSessions[sessionID] && mapSessionIDsTokens[sessionID]) {
             var tokens = mapSessionIDsTokens[sessionID];

@@ -13,9 +13,8 @@ function leaveSession() {
 };
 
 
-var OV = new OpenVidu();
+var OV      = new OpenVidu();
 var session = OV.initSession(sessionID);
-
 var messagesCount = 0;
 
 
@@ -32,30 +31,30 @@ session.on('signal', function(event) {
     if (messagesCount > 9) {
         $( "#messages" ).children().last().remove();
     } else {
-        messagesCount++
-;    }
+        messagesCount++;
+    }
     $( "#messages" ).prepend( `<p class="main-message ${colorStyle}">${event.from.data}:   ${event.data}</p>` );
 });
 
 session.connect(token, '', function (error) {
     if (!error) {
         if (role == "publisher") {
-          var publisher = OV.initPublisher('main-video', {
+            var publisher = OV.initPublisher('main-video', {
                 audio: true,
                 video: true,
                 audioActive: true,
                 videoActive: true,
                 quality: 'MEDIUM',
                 screen: true
-          });
+            });
 
-          publisher.on('videoElementCreated', function (event) {
-              $(event.element).prop('muted', true); // Mute local video
-          });
+            publisher.on('videoElementCreated', function (event) {
+                $(event.element).prop('muted', true); // Mute local video
+            });
 
-          session.publish(publisher);
+            session.publish(publisher);
         } else {
-          console.warn('You don\'t have permissions to publish');
+            console.warn('You don\'t have permissions to publish');
         }
     } else {
         console.warn('There was an error connecting to the session:', error.code, error.message);
@@ -81,11 +80,3 @@ function sendMessage() {
 function getID() {
     alert(sessionID);
 }
-
-$("#drop-down-button").click(function() {
-    if ($("#navbar-menu-container").attr(display) == "none") {
-        console.log("none");
-    } else {
-        console.log("not none");
-    }
-});
